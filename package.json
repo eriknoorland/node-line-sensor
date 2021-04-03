@@ -1,0 +1,16 @@
+{
+  "name": "line-sensor",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cobs": "^0.2.1",
+    "robotlib": "github:eriknoorland/node-robotlib",
+    "serialport": "^9.0.7"
+  }
+}
