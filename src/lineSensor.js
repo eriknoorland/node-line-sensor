@@ -1,7 +1,6 @@
 const EventEmitter = require('events');
 const SerialPort = require('serialport');
 const cobs = require('cobs');
-const robotlib = require('robotlib');
 const Parser = require('./Parser');
 
 /**
@@ -57,6 +56,8 @@ const lineSensor = (path) => {
    */
   function close() {
     return new Promise(resolve => {
+      writeToSerialPort([requestStartFlag, 0x02]);
+
       port.close(error => {
         resolve();
       });
