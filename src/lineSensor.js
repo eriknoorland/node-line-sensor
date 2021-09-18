@@ -17,11 +17,6 @@ const lineSensor = (path) => {
   let parser;
 
   /**
-   * Constructor
-   */
-  function constructor() {}
-
-  /**
    * Init
    * @return {Promise}
    */
@@ -56,17 +51,14 @@ const lineSensor = (path) => {
     return Promise.resolve();
   }
 
-  /**
-   * Writes the given buffer to the serial port
-   * @param {Array} data
-   */
   function writeToSerialPort(data) {
     port.write(cobs.encode(Buffer.from(data), true));
-  };
+  }
 
-  /**
-   * Port open event handler
-   */
+  function close() {
+    port.close();
+  }
+
   function onPortOpen() {
     port.flush(error => {
       if (error) {
@@ -75,9 +67,8 @@ const lineSensor = (path) => {
     });
   }
 
-  constructor();
-
   return {
+    close,
     init,
     isReady,
     on: eventEmitter.on.bind(eventEmitter),
